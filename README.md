@@ -4,12 +4,15 @@ Aplicação web desenvolvida com HTML, CSS e TypeScript puro para o projeto da d
 
 **Objetivo:** organizar um catálogo pessoal de filmes e séries, permitindo cadastrar títulos, localizar registros, acompanhar o que já foi assistido e consultar um resumo da coleção.
 
-**Autores:** [inserir nome(s) dos integrantes da equipe]
+**Autores:** 
+- **João Pedro dos Santos Jácome da Silva**
+- **Letícia Maria Eufrásio Reis**
+- **Maria Luiza Pereira Sousa**
 
 ## Funcionalidades
 
 - Cadastro de filmes, séries, documentários e animes.
-- Validação de título obrigatório e ano inteiro entre 1888 e 2100.
+- Validação de título obrigatório e ano inteiro.
 - Exibição dos registros em cards responsivos.
 - Busca por título e filtros por categoria e status.
 - Edição dos dados e alteração entre “Quero assistir” e “Já assisti”.
@@ -81,19 +84,6 @@ cineshelf/
 - **DOM e eventos:** seletores tipados, `addEventListener`, delegação de eventos e tratamento de elementos que podem não existir.
 - **Tipagem segura:** uso de `unknown` na leitura dos dados armazenados e validação do formato, sem substituir a modelagem por `any`.
 
-## Observações
-
-- Os arquivos de `src/` são os fontes TypeScript. Edite esses arquivos, não `dist/main.js`.
-- `dist/main.js` é gerado pelo comando `npm run build`.
-- Não é necessário enviar `node_modules/` ao repositório.
-
-
 ## Apresentação em vídeo
 
 **https://youtu.be/L6LFkabI0UQ**
-
-## Equipe
-
-- **João Pedro dos Santos Jácome da Silva**
-- **Letícia Maria Eufrásio Reis**
-- **Maria Luiza Pereira Sousa**
