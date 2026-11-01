@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f5edff" />
+  <meta name="description" content="Organize seus filmes e séries em um catálogo pessoal." />
+  <title>CineShelf</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="dist/main.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Navegação principal">
+      <a class="brand" href="#inicio" aria-label="CineShelf, início">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none"><rect x="4" y="5" width="24" height="22" rx="6" stroke="currentColor" stroke-width="2"/><path d="M4 12h24M11 5l5 7m5-7 5 7M11 27l5-7m5 7 5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </span>
+        <span class="brand-word">cine<span>shelf</span></span>
+      </a>
+
+      <div class="sidebar-label">MEU CANTINHO</div>
+      <nav class="side-nav">
+        <a class="nav-link active" href="#catalogo" aria-current="page">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="8" rx="2"/><rect x="14" y="3" width="7" height="5" rx="2"/><rect x="14" y="11" width="7" height="10" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/></svg>
+          <span>Meu catálogo</span><span class="nav-count" id="nav-total">0</span>
+        </a>
+        <button class="nav-link nav-button" type="button" data-set-status="unwatched">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <span>Quero assistir</span>
+        </button>
+        <button class="nav-link nav-button" type="button" data-set-status="watched">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16.5 9"/></svg>
+          <span>Já assisti</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="sidebar-note-icon" aria-hidden="true">✦</div>
+        <p class="sidebar-note-title">Maratona vindo aí?</p>
+        <p class="sidebar-note-text">Guarde tudo aqui e escolha seu próximo play!</p>
+        <button class="text-button" type="button" id="sidebar-add">Adicionar título <span aria-hidden="true">↗</span></button>
+      </div>
+    </aside>
+
+    <main class="main-content" id="inicio">
+      <header class="topbar">
+        <div class="breadcrumb"><strong>Minha estante</strong></div>
+      </header>
+
+      <section class="stats-grid" aria-label="Resumo do catálogo">
+        <article class="stat-card stat-total"><div class="stat-topline"><span class="stat-label">TÍTULOS NO CATÁLOGO</span><span class="stat-icon icon-violet">▦</span></div><div class="stat-number" id="stat-total">0</div><div class="stat-foot"><span class="stat-foot-dot violet-dot"></span> Filmes, séries e mais</div></article>
+        <article class="stat-card"><div class="stat-topline"><span class="stat-label">JÁ ASSISTIDOS</span><span class="stat-icon icon-green">✓</span></div><div class="stat-number" id="stat-watched">0</div><div class="stat-foot"><span class="stat-foot-dot green-dot"></span> Histórias concluídas</div></article>
+        <article class="stat-card"><div class="stat-topline"><span class="stat-label">NA LISTA</span><span class="stat-icon icon-orange">◷</span></div><div class="stat-number" id="stat-unwatched">0</div><div class="stat-foot"><span class="stat-foot-dot orange-dot"></span> Esperando por você</div></article>
+      </section>
+
+      <section class="catalog-section" id="catalogo" aria-labelledby="catalog-title">
+        <div class="section-heading">
+          <div><div class="eyebrow small-eyebrow"><span class="eyebrow-line"></span>O QUE ASSISTIR HOJE?</div><h2 id="catalog-title">Minha coleção</h2></div>
+          <span class="result-count" id="result-count">0 títulos</span>
+        </div>
+
+        <div class="toolbar">
+          <label class="search-box" for="search-input"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><input id="search-input" type="search" placeholder="Buscar por título..." autocomplete="off" /><kbd>⌕</kbd></label>
+          <div class="filters">
+            <label class="select-wrap"><span class="sr-only">Filtrar por categoria</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10m-7 6h4"/></svg><select id="category-filter"><option value="all">Todas as categorias</option><option value="Filme">Filmes</option><option value="Série">Séries</option><option value="Documentário">Documentários</option><option value="Anime">Animes</option></select></label>
+            <label class="select-wrap status-select-wrap"><span class="sr-only">Filtrar por status</span><select id="status-filter"><option value="all">Todos os status</option><option value="watched">Já assisti</option><option value="unwatched">Quero assistir</option></select></label>
+          </div>
+        </div>
+
+        <div class="active-filter-line" id="active-filter-line" hidden><span id="active-filter-text"></span><button type="button" id="clear-filters">Limpar filtros <span aria-hidden="true">×</span></button></div>
+        <div class="catalog-grid" id="catalog-grid" aria-live="polite" aria-busy="false"></div>
+        <div class="empty-state" id="empty-state" hidden><div class="empty-illustration" aria-hidden="true"><span>✳</span><div class="empty-ticket"><span>NO RESULTS</span><strong>?</strong></div></div><h3 id="empty-title">Sua estante está esperando.</h3><p id="empty-description">Adicione o primeiro filme ou série para começar sua coleção.</p><button class="primary-button" type="button" id="empty-add"><span class="button-plus" aria-hidden="true">+</span> Adicionar primeiro título</button></div>
+      </section>
+
+      <footer class="page-footer"><span>© 2026 CineShelf</span><span>Tópicos Especiais em Projeto e Desenvolvimento Web</span></footer>
+    </main>
+  </div>
+
+  <dialog class="modal" id="item-dialog" aria-labelledby="dialog-title">
+    <form id="item-form" class="modal-form" novalidate>
+      <div class="modal-heading"><div><div class="eyebrow small-eyebrow"><span class="eyebrow-line"></span> <span id="dialog-kicker">NOVA ENTRADA</span></div><h2 id="dialog-title"><span id="dialog-title-label">Adicionar título</span><span class="title-period">.</span></h2><p id="dialog-description">Coloque mais uma história na sua lista.</p></div><button class="icon-button" type="button" id="close-dialog" aria-label="Fechar formulário">×</button></div>
+      <div class="form-field"><label for="title-input">Nome do título <span>*</span></label><input id="title-input" name="title" type="text" maxlength="90" placeholder="Ex.: Interestelar" required /><small class="field-error" id="title-error"></small></div>
+      <div class="form-row"><div class="form-field"><label for="category-input">Categoria <span>*</span></label><select id="category-input" name="category" required><option value="Filme">Filme</option><option value="Série">Série</option><option value="Documentário">Documentário</option><option value="Anime">Anime</option></select></div><div class="form-field"><label for="year-input">Ano de lançamento <span>*</span></label><input id="year-input" name="year" type="number" min="1888" max="2100" step="1" placeholder="Ex.: 2024" required /><small class="field-error" id="year-error"></small></div></div>
+      <fieldset class="status-fieldset"><legend>Status inicial</legend><label class="radio-card"><input type="radio" name="watched" value="false" checked /><span class="radio-custom"></span><span class="radio-copy"><strong>Quero assistir</strong><small>Adicionar à minha lista</small></span><span class="radio-symbol orange-symbol">◷</span></label><label class="radio-card"><input type="radio" name="watched" value="true" /><span class="radio-custom"></span><span class="radio-copy"><strong>Já assisti</strong><small>Marcar como concluído</small></span><span class="radio-symbol green-symbol">✓</span></label></fieldset>
+      <div class="form-error-summary" id="form-error-summary" role="alert" hidden>Confira os campos destacados antes de continuar.</div>
+      <div class="modal-actions"><button class="secondary-button" type="button" id="cancel-dialog">Cancelar</button><button class="primary-button" id="submit-item" type="submit"><span class="button-plus" id="submit-icon" aria-hidden="true">+</span> <span id="submit-label">Salvar título</span></button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "none",
+    "strict": true,
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "outFile": "dist/main.js",
+    "skipLibCheck": true
+  },
+  "files": [
+    "src/types.ts",
+    "src/data/initialData.ts",
+    "src/dom/elements.ts",
+    "src/data/storage.ts",
+    "src/utils/html.ts",
+    "src/services/catalogFilters.ts",
+    "src/utils/catalogLabels.ts",
+    "src/components/movieCard.ts",
+    "src/components/catalogView.ts",
+    "src/components/dialog.ts",
+    "src/services/catalogActions.ts",
+    "src/main.ts"
+  ]
+}

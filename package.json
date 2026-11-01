@@ -1,0 +1,12 @@
+{
+  "name": "cineshelf-catalogo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Catálogo pessoal de filmes e séries com HTML, CSS e TypeScript puro.",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
